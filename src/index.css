@@ -1,0 +1,13 @@
+body {
+  margin: 0;
+  /* font-family: "Noto Sans Mono", monospace; */
+  font-family: "Noto Serif Lao", serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-image: linear-gradient(135deg, #fd6585 10%, #0d25b9 100%);
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}

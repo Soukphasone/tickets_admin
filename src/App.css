@@ -1,0 +1,14 @@
+/* App.css */
+.sidebar {
+    height: 100vh;
+    position: fixed;
+    width: 250px;
+}
+
+#page-content-wrapper {
+    width: 100%;
+    padding-left: 250px;
+    transition: all 0.3s;
+}
+
+/* Add more styling as needed */

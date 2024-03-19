@@ -6,8 +6,17 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-image: linear-gradient(135deg, #fd6585 10%, #0d25b9 100%);
 }
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+@font-face {
+  font-family: 'Noto Sans Lao';
+  src: url('../fonts/NotoSansLao-Regular.ttf') format('truetype');
+  /* Adjust the path accordingly */
+  font-weight: normal;
+  font-style: normal;
 }

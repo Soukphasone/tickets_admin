@@ -27,7 +27,7 @@ function UserCreate() {
   return (
     <>
       <Button variant="primary" onClick={handleShow} style={{ marginTop: 10 }}>
-        ເພີ່ມຊື່ຜູ້ໃຊ້
+        + ເພີ່ມຊື່ຜູ້ໃຊ້
       </Button>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
@@ -36,18 +36,20 @@ function UserCreate() {
         <Modal.Body>
           <Form onSubmit={handleSave}>
             <Form.Group className="mb-3" controlId="name">
-              <Form.Control
-                type="text"
-                placeholder="ຊື່"
-                autoFocus
+              <select
+                className="form-control"
                 onChange={(e) => setName(e.target.value)}
                 required
-              />
+              >
+                <option value="">Select Role</option>
+                <option value="Admin">admin</option>
+                <option value="User">user</option>
+              </select>
             </Form.Group>
             <Form.Group className="mb-3" controlId="username">
               <Form.Control
                 type="text"
-                placeholder="ຜູ້ໃໍຊ້"
+                placeholder="ຊື່ຜູ້ໃຊ້"
                 onChange={(e) => setUsername(e.target.value)}
                 required
               />

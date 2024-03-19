@@ -1,14 +1,123 @@
-.sidebar ul li:hover {
-   background-color: rgba(117, 117, 117, 117);
-   border-radius: 5px;
-   cursor: pointer;
+/* Close button */
+.close-sidebar-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  padding: 5px;
+  /* Add padding */
+  margin: 10px;
+  /* Add margin */
 }
-.sidebar ul li:hover a{
+
+.close-sidebar-btn:hover {
+  background-color: #555;
+  /* Darker background color on hover */
+}
+
+.close-sidebar-btn:focus {
+  outline: none;
+}
+
+/* Close icon */
+.close-icon {
+  color: #fff;
+  /* White color for the close icon */
+  font-size: 20px;
+  /* Adjust font size */
+}
+
+/* Sidebar */
+.sidebar-container {
+  position: fixed;
+  top: 0;
+  left: -300px;
+  width: 300px;
+  height: 100%;
+  background-color: #292b2c;
+  transition: left 0.3s ease;
+  z-index: 1050;
+}
+
+.sidebar-container.show {
+  left: 0;
+}
+
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+.sidebar-title {
+  color: #fff;
+  font-size: 24px;
+}
+
+.sidebar-menu {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar-menu li {
+  margin-bottom: 10px;
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  color: #fff;
   text-decoration: none;
-  color: white;
+  transition: background-color 0.3s ease;
 }
-.active{
-    background-color: rgba(117, 117, 117, 117);
-    border-radius: 5px;
-    color: white;
+
+.sidebar-link:hover {
+  background-color: #555;
+  /* Darker background color on hover */
+}
+
+.sidebar-link i {
+  margin-right: 10px;
+  font-size: 18px;
+  /* Adjust icon size */
+}
+
+.sidebar-link span {
+  font-size: 16px;
+  /* Adjust text size */
+}
+
+.sidebar-footer {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+}
+
+.logout-button {
+  width: 100%;
+}
+
+.sidebar-toggle-btn {
+  position: fixed;
+  top: 10px;
+  left: 20px;
+  z-index: 2;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+}
+
+.sidebar-toggle-btn:hover {
+  background-color: transparent;
+}
+
+.sidebar-close-btn {
+  color: #fff;
 }

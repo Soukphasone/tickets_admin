@@ -1,25 +1,7 @@
-import React from 'react'
-import "bootstrap/dist/js/bootstrap.bundle.js"
-const Navbar = ({Toggle}) => {
-  return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div className="container-fluid">
-      <a className="navbar-brand d-block d-md-none" onClick={Toggle}><i className="bi bi-justify"></i></a>
-      {/* <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span className="navbar-toggler-icon"></span>
-      </button> */}
-      {/* <div className="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-          <li className="nav-item border rounded" style={{width:150}}>
-            <a className="nav-link text-white" aria-current="page" href="#">
-                <i className='bi bi-search'> Search</i>
-                </a>
-          </li>
-        </ul>
-      </div> */}
-    </div>
-  </nav>
-  )
-}
+import {} from "@mui/material";
 
-export default Navbar
+const AppBarWithBackground = () => {
+  return <></>;
+};
+
+export default AppBarWithBackground;

@@ -1,18 +1,23 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Card, Col, Row, Table, Spinner } from "react-bootstrap";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import moment from "moment";
 import PaginationComponent from "../Helper/PaginationComponents";
+
+import BackButton from "../components/Backbutton";
 
 const Detail = () => {
   const [data, setData] = useState([]); // State to store the fetched data
   const [currentPage, setCurrentPage] = useState(1); // State for current page number
   const [itemsPerPage] = useState(10); // State for items per page
   const location = useLocation(); // Get the location object from react-router
-  const userId = location.state; // Extract the user ID from the location state
+  const userId = location.state._id; // Extract the user ID from the location state
+  const username = location.state.username;
   const [loading, setLoading] = useState(false); // State to manage loading state
   const [error, setError] = useState(null); // State to manage error state
+  const navigate = useNavigate();
+
   // const [filteredData, setFilteredData] = useState([]); // State to store filtered data
 
   // Function to fetch data from the API
@@ -42,6 +47,7 @@ const Detail = () => {
   // }, [data, userId]);
 
   // Calculate counts for each type of vehicle
+
   const countBicycle = data.filter((item) => item.carType === "ລົດຖີບ").length;
   const countMotocycle = data.filter(
     (item) => item.carType === "ລົດຈັກ"
@@ -71,16 +77,31 @@ const Detail = () => {
   const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
   const totalPages = Math.ceil(data.length / itemsPerPage);
 
+  const goBack = () => {
+    navigate("/users"); // Go back one step in the history stack
+  };
   return (
     <>
       <section className="p-2 vh-100">
-        <h2>Data for User ID: {userId}</h2>
+        <br></br>
 
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <div onClick={goBack} style={{ cursor: "pointer" }}>
+            <BackButton goBack={goBack} />
+          </div>
+          <h2
+            className="d-flex"
+            style={{ marginLeft: "auto", marginRight: "auto" }}
+          >
+            ຊື່ບັນຊີຜູ້ໃຊ້:({username})
+          </h2>
+        </div>
+        <hr />
         <Row xs={1} md={2} lg={4} className="mb-3">
           <Col>
             <Card className="h-100">
               <Card.Body className="text-center">
-                <Card.Title>Car</Card.Title>
+                <Card.Title>ລົດໃຫຍ່</Card.Title>
                 <Card.Text>{countCar}</Card.Text>
               </Card.Body>
             </Card>
@@ -88,7 +109,7 @@ const Detail = () => {
           <Col>
             <Card className="h-100">
               <Card.Body className="text-center">
-                <Card.Title>Bicycle</Card.Title>
+                <Card.Title>ລົດຖີບ</Card.Title>
                 <Card.Text>{countBicycle}</Card.Text>
               </Card.Body>
             </Card>
@@ -96,7 +117,7 @@ const Detail = () => {
           <Col>
             <Card className="h-100">
               <Card.Body className="text-center">
-                <Card.Title>Motocycle</Card.Title>
+                <Card.Title>ລົດໃຫຍ່</Card.Title>
                 <Card.Text>{countMotocycle}</Card.Text>
               </Card.Body>
             </Card>
@@ -104,7 +125,7 @@ const Detail = () => {
           <Col>
             <Card className="h-100">
               <Card.Body className="text-center">
-                <Card.Title>Total</Card.Title>
+                <Card.Title>ລວມທັງໝົດ</Card.Title>
                 <Card.Text>
                   {countMotocycle + countBicycle + countCar}
                 </Card.Text>
@@ -117,7 +138,7 @@ const Detail = () => {
           <Col>
             <Card className="h-100">
               <Card.Body className="text-center">
-                <Card.Title>Cash Total</Card.Title>
+                <Card.Title>ເງິນສົດ</Card.Title>
                 <Card.Text>{cashTotalValue}</Card.Text>
               </Card.Body>
             </Card>
@@ -125,7 +146,7 @@ const Detail = () => {
           <Col>
             <Card className="h-100">
               <Card.Body className="text-center">
-                <Card.Title>Transfer Total</Card.Title>
+                <Card.Title>ເງິນໂອນ</Card.Title>
                 <Card.Text>{transferTotalValue}</Card.Text>
               </Card.Body>
             </Card>
@@ -133,7 +154,7 @@ const Detail = () => {
           <Col>
             <Card className="h-100">
               <Card.Body className="text-center">
-                <Card.Title>Total</Card.Title>
+                <Card.Title>ລວມຍອດທັງໝົດ</Card.Title>
                 <Card.Text>{cashTotalValue + transferTotalValue}</Card.Text>
               </Card.Body>
             </Card>
@@ -144,13 +165,13 @@ const Detail = () => {
           <thead>
             <tr>
               <th>#</th>
-              <th>Sign</th>
-              <th>Car Type</th>
-              <th>Money</th>
-              <th>Amount</th>
-              <th>Status</th>
-              <th>Created At</th>
-              <th>Created Out</th>
+              <th>ທະບຽນ ຫລື ເລກກົງເຕີ </th>
+              <th>ປະເພດລົດ</th>
+              <th>ປະເພດສຳລະ</th>
+              <th>ຈຳນວນ</th>
+              <th>ສະຖານະ</th>
+              <th>ເວລາເຂົ້າ</th>
+              <th>ເວລາອອກ</th>
             </tr>
           </thead>
           <tbody>
@@ -171,7 +192,7 @@ const Detail = () => {
             {currentItems.length === 0 && !loading && (
               <tr>
                 <td colSpan="8" className="text-center">
-                  NO DATA
+                  ບໍ່ມີຂໍ້ມູນ
                 </td>
               </tr>
             )}
@@ -191,12 +212,22 @@ const Detail = () => {
             ))}
           </tbody>
         </Table>
-        {!loading && currentItems.length > 0 && (
+
+        {/* {!loading && currentItems.length > 0 && (
           <PaginationComponent
             totalPages={totalPages}
             currentPage={currentPage}
             paginate={paginate}
           />
+        )} */}
+        {!loading && currentItems.length > 0 && currentItems.length > 5 && (
+          <div className="mt-3 d-flex " style={{ justifyContent: "end" }}>
+            <PaginationComponent
+              totalPages={totalPages}
+              currentPage={currentPage}
+              paginate={paginate}
+            />
+          </div>
         )}
       </section>
     </>

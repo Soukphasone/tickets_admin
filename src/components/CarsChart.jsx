@@ -130,7 +130,7 @@ const CarsChart = () => {
         height: "450px",
       }}
     >
-      <h3>Cars</h3>
+      <h4 className="p-2">Chart ສະແດງພາບລວມຂອງລົດ</h4>
       <canvas id="chart-data" width={400} height={400}></canvas>
     </div>
   );

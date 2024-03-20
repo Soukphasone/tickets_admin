@@ -120,7 +120,7 @@ const MoneyChart = () => {
         height: "450px",
       }}
     >
-      <h3>Money</h3>
+      <h4 className="p-2">Chart ສະແດງພາບລວມຂອງຍອດເງິນ </h4>
       <canvas id="money-chart" width={400} height={400}></canvas>
     </div>
   );

@@ -71,7 +71,10 @@ function AppRoutes() {
         {/* Conditional rendering of routes based on user authentication */}
         {user ? (
           <>
-            <Route path="/" element={<Home />} />
+            <Route
+              path="/"
+              element={user ? <Home /> : <Navigate to="/login" />}
+            />
             <Route path="/detail" element={<Detail />} />
             <Route path="/users" element={<Users />} />
             <Route path="/userchart" element={<UserChart />} />

@@ -79,7 +79,7 @@ const UserChart = () => {
     <div
       style={{ backgroundColor: "whitesmoke", width: "400px", height: "450px" }}
     >
-      <h4>User Creation Chart</h4>
+      <h4 className="p-2"> Chart ສະແດງພາບລວມຂອງສະມາຊິກ</h4>
       <Line
         data={chartData}
         options={chartOptions}

@@ -59,6 +59,7 @@ export default function CardReport() {
 
   const totalAdminCount = users.filter((user) => user.name === "Admin").length;
   const totalUserCount = users.filter((user) => user.name === "User").length;
+
   return (
     <div>
       <Row className="row-cols-1 row-cols-md-3 g-2 p-2">
@@ -67,11 +68,12 @@ export default function CardReport() {
             <Card.Body>
               <Card.Title>
                 <FontAwesomeIcon icon={faUser} className="me-2" />
-                Users
+                ພາບລວມສະມາຊິກ
               </Card.Title>
               <Card.Text className="fs-6">
-                Users: {totalUserCount} | Admin: {totalAdminCount} |
-                <br /> Total: {totalUserCount + totalAdminCount}
+                User: {totalUserCount} | Admin: {totalAdminCount} |
+                <br />
+                ລວມທັງໝົດ : {totalUserCount + totalAdminCount}
               </Card.Text>
             </Card.Body>
           </Card>
@@ -81,15 +83,17 @@ export default function CardReport() {
             <Card.Body>
               <Card.Title>
                 <FontAwesomeIcon icon={faCar} className="me-2" />
-                Total Vehicles
+                ພາບລວມລົດທັງໝົດ
               </Card.Title>
               <Card.Text className="fs-6">
-                Cars: {countVehicle("ລົດໃຫຍ່")} | Bikes:{" "}
-                {countVehicle("ລົດຈັກ")} | Cycles: {countVehicle("ລົດຖີບ")} |
-                <br /> Total:{" "}
+                ລົດໃຫຍ່: {countVehicle("ລົດໃຫຍ່")}ຄັນ | ລົດຈັກ:{" "}
+                {countVehicle("ລົດຈັກ")} ຄັນ| ຈຳນວນລົດຖີບ:{" "}
+                {countVehicle("ລົດຖີບ")}ຄັນ |
+                <br /> ລວມທັງໝົດ:{" "}
                 {countVehicle("ລົດໃຫຍ່") +
                   countVehicle("ລົດຈັກ") +
                   countVehicle("ລົດຖີບ")}
+                ຄັນ
               </Card.Text>
             </Card.Body>
           </Card>
@@ -99,11 +103,11 @@ export default function CardReport() {
             <Card.Body>
               <Card.Title>
                 <FontAwesomeIcon icon={faMoneyBillAlt} className="me-2" />
-                Total Revenue
+                ລວມຍອດທັງໝົດ
               </Card.Title>
               <Card.Text className="fs-6">
-                Cash: {totalCash} ກີບ | Transfer: {totalTransfer} ກີບ <br />
-                Total: {totalCash + totalTransfer} ກີບ
+                ເງິນສົດ: {totalCash} ກີບ | ເງິນໂອນ: {totalTransfer} ກີບ <br />
+                ລວມທັງໝົດ: {totalCash + totalTransfer} ກີບ
               </Card.Text>
             </Card.Body>
           </Card>

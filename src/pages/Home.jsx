@@ -22,12 +22,16 @@ const Home = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+  // window.onbeforeunload = function () {
+  //   localStorage.clear();
+  // };
+
   return (
     <>
-      <div className={showSidebar ? "d-none d-md-block" : "w-auto"}>
-        <Sidebar />
-      </div>
       <div className="p-2">
+        <div className={showSidebar ? "d-none d-md-block" : "w-auto"}>
+          <Sidebar />
+        </div>
         <h1 className="text-center mt-4 mb-5">Dashboard</h1>
         <CardReport />
         <Row className="g-2 p-2">
